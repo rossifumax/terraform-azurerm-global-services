@@ -1,0 +1,1 @@
+# Azure global resources
