@@ -1,0 +1,7 @@
+#pricing_tier="Standard"
+contact_email="SOC-Lille@fr.clara.net"
+contact_phone="0123456789"
+#alert_notifications="true"
+#alerts_to_admins="true"
+scopes=["/subscriptions/499bbc6c-d927-488d-8e6d-a463319d78fe","/subscriptions/499bbc6c-d927-488d-8e6d-a463319d78fe"]
+analytics_workspaces_ids=["/subscriptions/499bbc6c-d927-488d-8e6d-a463319d78fe/resourcegroups/aks-advanced-network/providers/microsoft.operationalinsights/workspaces/aks-logs","/subscriptions/499bbc6c-d927-488d-8e6d-a463319d78fe/resourcegroups/rgp.support.mspazure/providers/microsoft.operationalinsights/workspaces/msp-oms"]
