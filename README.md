@@ -1,42 +1,71 @@
 # Azure Global Services
 
-This feature attachs one or several existing log analytics workspaces to the Azure security center and configures contact infos for notifications.
+## Purpose
+This feature gathers the following Azure Global Services in one feature:
+* [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/)
 
 ## Usage
 
-```shell
-
+```hcl
 module "global-services" {
-  source			= "git@git.fr.clara.net:claranet/cloudnative/projects/cloud/azure/terraform/features/global-services.git?ref=vX.X.X"
+  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/global-services.git?ref=vX.X.X"
 
-  #Mandatory
-  contact_email			= "${var.contact_email}"
-  contact_phone			= "${var.contact_phone}"
-  scopes			= "${var.scopes}"
-  analytics_workspaces_ids	= "${var.analytics_workspaces_ids}"
+  security_center_contact_email = "${var.contact_email}"
+  security_center_contact_emailcontact_phone = "${var.contact_phone}"
 
-  #Optional
-  pricing_tier			= "${var.pricing_tier}"
-  alert_notifications		= "${var.alert_notifications}"
-  alerts_to_admins		= "${var.alerts_to_admins}"
+  # Optional
+  security_center_contact_emailpricing_tier        = "Standard"
+  security_center_contact_emailalert_notifications = "true"
+  security_center_contact_emailalerts_to_admins    = "true"
+
+  security_center_contact_emailworkspaces = {
+    "/subscriptions/00000000-0000-0000-0000-000000000000"                        = "${data.azurerm_log_analytics_workspace.workspace1.id}"  
+    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg" = "${data.azurerm_log_analytics_workspace.workspace2.id}"
+  }
 }
-
 ```
+
+## Using sub-modules
+Each integrated service can be used separately with the same inputs and outputs.
+
+### Security Center
+```hcl
+module "security-center" {
+  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/global-services.git//security-center?ref=vX.X.X"
+
+  security_center_contact_email = "${var.contact_email}"
+  security_center_contact_emailcontact_phone = "${var.contact_phone}"
+
+  # Optional
+  security_center_contact_emailpricing_tier        = "Standard"
+  security_center_contact_emailalert_notifications = "true"
+  security_center_contact_emailalerts_to_admins    = "true"
+
+  security_center_contact_emailworkspaces = {
+    "/subscriptions/00000000-0000-0000-0000-000000000000"                        = "${data.azurerm_log_analytics_workspace.workspace1.id}"  
+    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg" = "${data.azurerm_log_analytics_workspace.workspace2.id}"
+  }
+}
+```
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| alert\_notifications | Whether to send security alerts notifications to the security contact or not. https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html#alert_notifications | string | `"true"` | no |
-| alerts\_to\_admins | Whether to send security alerts notifications to subscription admins or not. https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html#alerts_to_admins | string | `"true"` | no |
-| analytics\_workspaces\_ids | The IDs of the Log Analytics Workspaces to save the data in and to link to this security workspace. https://www.terraform.io/docs/providers/azurerm/r/security_center_workspace.html#workspace_id | list | n/a | yes |
-| contact\_email | The email of the Security Center Contact. https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html#email | string | n/a | yes |
-| contact\_phone | The phone number of the Security Center Contact. https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html#phone | string | n/a | yes |
-| pricing\_tier | Manages the Pricing Tier for Azure Security Center in the current subscription. Possible values are Free and Standard. NOTE: Changing the pricing tier to Standard affects all resources in the subscription and could be quite costly. Deletion of this resource does not change or reset the pricing tier to Free. Source: https://www.terraform.io/docs/providers/azurerm/r/security_center_subscription_pricing.html | string | `"Free"` | no |
-| scopes | List of scopes of VMs to send their security data to the desired workspace, unless overridden by a setting with more specific scope. Provide a scope for each of the analytics workspaces that will be linked to the security workspace. https://www.terraform.io/docs/providers/azurerm/r/security_center_workspace.html#scope | list | n/a | yes |
+| security\_center\_alert\_notifications | Whether to send security alerts notifications to the security contact or not. https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html#alert_notifications | string | `"true"` | no |
+| security\_center\_alerts\_to\_admins | Whether to send security alerts notifications to subscription admins or not. https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html#alerts_to_admins | string | `"true"` | no |
+| security\_center\_contact\_email | The email of the Security Center Contact. https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html#email | string | n/a | yes |
+| security\_center\_contact\_phone | The phone number of the Security Center Contact. https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html#phone | string | n/a | yes |
+| security\_center\_pricing\_tier | Manages the Pricing Tier for Azure Security Center in the current subscription. Possible values are Free and Standard. NOTE: Changing the pricing tier to Standard affects all resources in the subscription and could be quite costly. Deletion of this resource does not change or reset the pricing tier to Free. Source: https://www.terraform.io/docs/providers/azurerm/r/security_center_subscription_pricing.html | string | `"Free"` | no |
+| security\_center\_workspaces | Map of the scopes with the associated Log Analytics Workspace.     Can only be used on \"Standard\" tier. Scope can be a Subscription or Resource Group id.     Example {       "/subscriptions/00000000-0000-0000-0000-000000000000" = "${data.azurerm_log_analytics_workspace.workspace.id}"     }     See https://www.terraform.io/docs/providers/azurerm/r/security_center_workspace.html" | map | `<map>` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| contact\_id | The Security Center Contact ID. |
-| security\_center\_workspace\_id | The Security Center Workspace ID. |
+| security\_center\_contact\_id | The Security Center contact ID. |
+| security\_center\_pricing\_id | The Security Center subscription pricing ID. |
+| security\_center\_workspaces\_ids | The Security Center Workspaces IDs. |
+
+## Related documentation
+Microsoft Azure Security Center documentation: [https://docs.microsoft.com/en-us/azure/security-center/]

@@ -1,9 +1,17 @@
-output "contact_id" {
-  description = "The Security Center Contact ID. "
-  value       = "${azurerm_security_center_contact.contact.id}"
+###############################
+# Security Center outputs
+###############################
+output "security_center_pricing_id" {
+  description = "The Security Center subscription pricing ID."
+  value       = "${module.security-center.security_center_pricing_id}"
 }
 
-output "security_center_workspace_id" {
-  description = "The Security Center Workspace ID. "
-  value       = "${azurerm_security_center_workspace.security_workspace.*.id}"
+output "security_center_contact_id" {
+  description = "The Security Center contact ID."
+  value       = "${module.security-center.security_center_contact_id}"
+}
+
+output "security_center_workspaces_ids" {
+  description = "The Security Center Workspaces IDs."
+  value       = "${module.security-center.security_center_workspaces_ids}"
 }

@@ -1,7 +1,9 @@
-#pricing_tier="Standard"
-contact_email="SOC-Lille@fr.clara.net"
-contact_phone="0123456789"
-#alert_notifications="true"
-#alerts_to_admins="true"
-scopes=["/subscriptions/499bbc6c-d927-488d-8e6d-a463319d78fe","/subscriptions/499bbc6c-d927-488d-8e6d-a463319d78fe"]
-analytics_workspaces_ids=["/subscriptions/499bbc6c-d927-488d-8e6d-a463319d78fe/resourcegroups/aks-advanced-network/providers/microsoft.operationalinsights/workspaces/aks-logs","/subscriptions/499bbc6c-d927-488d-8e6d-a463319d78fe/resourcegroups/rgp.support.mspazure/providers/microsoft.operationalinsights/workspaces/msp-oms"]
+security_center_pricing_tier="Standard"
+security_center_contact_email="test@fr.clara.net"
+security_center_contact_phone="0123456789"
+security_center_alert_notifications="true"
+security_center_alerts_to_admins="true"
+security_center_workspaces={
+    "/subscriptions/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" = "/subscriptions/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee/resourcegroups/test-workspace-rg/providers/microsoft.operationalinsights/workspaces/my-logs"
+    "/subscriptions/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee/resourcegroups/test-rg" = "/subscriptions/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee/resourcegroups/test-workspace-rg/providers/microsoft.operationalinsights/workspaces/my-logs2"
+}
