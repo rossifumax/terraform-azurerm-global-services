@@ -1,24 +1,33 @@
 # Azure Global Services
 
-## Purpose
 This feature gathers the following Azure Global Services in one feature:
 * [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/)
 
 ## Usage
 
 ```hcl
+data "azurerm_log_analytics_workspace" "workspace1" {
+  name                = "workspace1-log"
+  resource_group_name = "test-rg"
+}
+
+data "azurerm_log_analytics_workspace" "workspace2" {
+  name                = "workspace2-log"
+  resource_group_name = "test-rg"
+}
+
 module "global-services" {
   source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/global-services.git?ref=vX.X.X"
 
   security_center_contact_email = "${var.contact_email}"
-  security_center_contact_emailcontact_phone = "${var.contact_phone}"
+  security_center_contact_phone = "${var.contact_phone}"
 
   # Optional
-  security_center_contact_emailpricing_tier        = "Standard"
-  security_center_contact_emailalert_notifications = "true"
-  security_center_contact_emailalerts_to_admins    = "true"
+  security_center_pricing_tier        = "Standard"
+  security_center_alert_notifications = "true"
+  security_center_alerts_to_admins    = "true"
 
-  security_center_contact_emailworkspaces = {
+  security_center_workspaces = {
     "/subscriptions/00000000-0000-0000-0000-000000000000"                        = "${data.azurerm_log_analytics_workspace.workspace1.id}"  
     "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg" = "${data.azurerm_log_analytics_workspace.workspace2.id}"
   }
@@ -30,18 +39,28 @@ Each integrated service can be used separately with the same inputs and outputs.
 
 ### Security Center
 ```hcl
+data "azurerm_log_analytics_workspace" "workspace1" {
+  name                = "workspace1-log"
+  resource_group_name = "test-rg"
+}
+
+data "azurerm_log_analytics_workspace" "workspace2" {
+  name                = "workspace2-log"
+  resource_group_name = "test-rg"
+}
+
 module "security-center" {
   source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/global-services.git//security-center?ref=vX.X.X"
 
   security_center_contact_email = "${var.contact_email}"
-  security_center_contact_emailcontact_phone = "${var.contact_phone}"
+  security_center_contact_phone = "${var.contact_phone}"
 
   # Optional
-  security_center_contact_emailpricing_tier        = "Standard"
-  security_center_contact_emailalert_notifications = "true"
-  security_center_contact_emailalerts_to_admins    = "true"
+  security_center_pricing_tier        = "Standard"
+  security_center_alert_notifications = "true"
+  security_center_alerts_to_admins    = "true"
 
-  security_center_contact_emailworkspaces = {
+  security_center_workspaces = {
     "/subscriptions/00000000-0000-0000-0000-000000000000"                        = "${data.azurerm_log_analytics_workspace.workspace1.id}"  
     "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg" = "${data.azurerm_log_analytics_workspace.workspace2.id}"
   }
