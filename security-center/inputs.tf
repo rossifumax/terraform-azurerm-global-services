@@ -31,10 +31,10 @@ variable "security_center_alerts_to_admins" {
 
 variable "security_center_workspaces" {
   description = <<DESC
-    Map of the scopes with the associated Log Analytics Workspace.
+    "Map of the scopes with the associated Log Analytics Workspace.
     Can only be used on \"Standard\" tier. Scope can be a Subscription or Resource Group id.
     Example {
-      "/subscriptions/00000000-0000-0000-0000-000000000000" = "${data.azurerm_log_analytics_workspace.workspace.id}"
+      \"/subscriptions/00000000-0000-0000-0000-000000000000\" = data.azurerm_log_analytics_workspace.workspace.id
     }
     See https://www.terraform.io/docs/providers/azurerm/r/security_center_workspace.html"
 DESC
