@@ -1,3 +1,11 @@
+# v2.0.0 - unreleased
+
+Breaking:
+  * AZ-94: Bump to terraform 0.12
+  
+Added:
+  * AZ-117: Publish to terraform registry
+
 # v1.0.0 - 2019-04-30
 
 Added

@@ -1,9 +1,13 @@
 # Azure Global Services
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/global-services/azurerm/)
 
-This feature gathers the following Azure Global Services in one feature:
+This feature (module composition) gathers the following Azure Global Services in one feature:
 * [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/)
 
+## Requirements
+
+ * [AzureRM Terraform provider](https://www.terraform.io/docs/providers/azurerm/) >= 1.36
+ 
 ## Terraform version compatibility
 
 | Module version | Terraform version |
@@ -29,7 +33,8 @@ data "azurerm_log_analytics_workspace" "workspace2" {
 }
 
 module "global-services" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/global-services.git?ref=vX.X.X"
+  source  = "claranet/global-services/azurerm"
+  version = "x.x.x"
 
   security_center_contact_email = var.contact_email
   security_center_contact_phone = var.contact_phone
@@ -62,7 +67,8 @@ data "azurerm_log_analytics_workspace" "workspace2" {
 }
 
 module "security-center" {
-  source = "git::ssh://git@git.fr.clara.net/claranet/cloudnative/projects/cloud/azure/terraform/features/global-services.git//security-center?ref=vX.X.X"
+  source = "claranet/global-services/azurerm//modules/security-center"
+  version = "x.x.x"
 
   security_center_contact_email = var.contact_email
   security_center_contact_phone = var.contact_phone
@@ -99,4 +105,11 @@ module "security-center" {
 | security\_center\_workspaces\_ids | The Security Center Workspaces IDs. |
 
 ## Related documentation
-Microsoft Azure Security Center documentation: [https://docs.microsoft.com/en-us/azure/security-center/]
+
+Terraform Security Center Subscription Pricing documentation: [www.terraform.io/docs/providers/azurerm/r/security_center_subscription_pricing.html](https://www.terraform.io/docs/providers/azurerm/r/security_center_subscription_pricing.html)
+
+Terraform Security Center Contact documentation: [www.terraform.io/docs/providers/azurerm/r/security_center_contact.html](https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html)
+
+Terraform Security Center Workspace documentation: [www.terraform.io/docs/providers/azurerm/r/security_center_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/security_center_workspace.html)
+
+Microsoft Azure Security Center documentation: [docs.microsoft.com/en-us/azure/security-center/](https://docs.microsoft.com/en-us/azure/security-center/)

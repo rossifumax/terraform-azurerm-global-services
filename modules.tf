@@ -1,5 +1,5 @@
 module "security-center" {
-  source = "./security-center"
+  source = "./modules/security-center"
 
   security_center_contact_email = var.security_center_contact_email
   security_center_contact_phone = var.security_center_contact_phone
