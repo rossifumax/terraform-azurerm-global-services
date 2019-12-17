@@ -1,8 +1,7 @@
 # Azure Security Center
-[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/global-services/azurerm/2.0.0/submodules/security-center)
 
 This module deploy the following Azure's feature:
-* [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/)
+ * [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/)
 
 ## Requirements
 
@@ -69,4 +68,14 @@ module "security-center" {
 | security\_center\_contact\_id | The Security Center contact ID. |
 | security\_center\_pricing\_id | The Security Center subscription pricing ID. |
 | security\_center\_workspaces\_ids | The Security Center Workspaces IDs. |
+
+## Related documentation
+
+Terraform Security Center Subscription Pricing documentation: [www.terraform.io/docs/providers/azurerm/r/security_center_subscription_pricing.html](https://www.terraform.io/docs/providers/azurerm/r/security_center_subscription_pricing.html)
+
+Terraform Security Center Contact documentation: [www.terraform.io/docs/providers/azurerm/r/security_center_contact.html](https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html)
+
+Terraform Security Center Workspace documentation: [www.terraform.io/docs/providers/azurerm/r/security_center_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/security_center_workspace.html)
+
+Microsoft Azure Security Center documentation: [docs.microsoft.com/en-us/azure/security-center/](https://docs.microsoft.com/en-us/azure/security-center/)
 

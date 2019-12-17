@@ -1,7 +1,7 @@
 # v2.0.1 - Unreleased
 
 Added:
-  * AZ-155: Fix documentation to correspond to Hashicorp registry standard
+  * AZ-155: Fix documentation to match Hashicorp registry standard
 
 # v2.0.0 - 2019-12-05
 
