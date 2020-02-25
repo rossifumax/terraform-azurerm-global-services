@@ -10,5 +10,5 @@ output "security_center_contact_id" {
 
 output "security_center_workspaces_ids" {
   description = "The Security Center Workspaces IDs."
-  value       = azurerm_security_center_workspace.security_workspace.*.id
+  value       = azurerm_security_center_workspace.security_workspace[*].id
 }
