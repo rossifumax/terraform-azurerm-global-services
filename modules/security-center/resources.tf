@@ -11,11 +11,10 @@ resource "azurerm_security_center_contact" "contact" {
 
 # Manages the subscription's Security Center Workspace.
 resource "azurerm_security_center_workspace" "security_workspace" {
-  count = length(var.security_center_workspaces)
+  for_each = var.security_center_workspaces
 
-  scope        = element(keys(var.security_center_workspaces), count.index)
-  workspace_id = element(values(var.security_center_workspaces), count.index)
+  scope        = each.key
+  workspace_id = each.value
 
   depends_on = [azurerm_security_center_subscription_pricing.pricing]
 }
-
