@@ -68,7 +68,7 @@ module "security-center" {
 |------|-------------|
 | security\_center\_contact\_id | The Security Center contact ID. |
 | security\_center\_pricing\_id | The Security Center subscription pricing ID. |
-| security\_center\_workspaces\_ids | The Security Center Workspaces IDs. |
+| security\_center\_workspaces | The Security Center Workspaces |
 
 ## Related documentation
 
