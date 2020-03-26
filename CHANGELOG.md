@@ -1,4 +1,4 @@
-# v2.0.2 - xx
+# v2.0.2 - 2020-03-26
 
 Updated
   * AZ-94 AZ-119 AZ-66: Global code cleanup and README updates
