@@ -18,15 +18,15 @@ module "rg" {
 
 module "global-services" {
   source  = "claranet/global-services/azurerm"
-  version = "2.0.0"
+  version = "2.0.2"
 
   security_center_contact_email = var.contact_email
   security_center_contact_phone = var.contact_phone
 
   # Optional
   security_center_pricing_tier        = "Standard"
-  security_center_alert_notifications = "true"
-  security_center_alerts_to_admins    = "true"
+  security_center_alert_notifications = true
+  security_center_alerts_to_admins    = true
 
   security_center_workspaces = {
     "/subscriptions/00000000-0000-0000-0000-000000000000"                        = azurerm_log_analytics_workspace.workspace1.id

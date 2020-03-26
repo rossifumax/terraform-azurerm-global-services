@@ -11,8 +11,7 @@ output "security_center_contact_id" {
   value       = module.security-center.security_center_contact_id
 }
 
-output "security_center_workspaces_ids" {
-  description = "The Security Center Workspaces IDs."
-  value       = module.security-center.security_center_workspaces_ids
+output "security_center_workspaces" {
+  description = "The Security Center Workspaces"
+  value       = module.security-center.security_center_workspaces
 }
-

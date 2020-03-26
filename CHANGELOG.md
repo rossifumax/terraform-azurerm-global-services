@@ -1,3 +1,8 @@
+# v2.0.2 - xx
+
+Updated
+  * AZ-94 AZ-119 AZ-66: Global code cleanup and README updates
+
 # v2.0.1 - 2019-12-18
 
 Fixed
