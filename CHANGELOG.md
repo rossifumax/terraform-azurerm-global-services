@@ -1,4 +1,4 @@
-# v3.0.0 - Unreleased
+# v3.0.0 - 2020-07-03
 
 Updated
   * AZ-206: Don't pin AzureRM provider version to 1.x, now compatible 2.x+
