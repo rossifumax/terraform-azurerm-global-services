@@ -7,6 +7,12 @@ variable "security_center_pricing_tier" {
   default     = "Free"
 }
 
+variable "security_center_pricing_resource_type" {
+  description = "The resource type this setting affects. Possible values are AppServices, ContainerRegistry, KeyVaults, KubernetesService, SqlServers, SqlServerVirtualMachines, StorageAccounts, and VirtualMachines. Source: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_subscription_pricing#resource_type"
+  type        = string
+  default     = "VirtualMachines"
+}
+
 variable "security_center_contact_email" {
   description = "The email of the Security Center Contact. https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html#email"
   type        = string

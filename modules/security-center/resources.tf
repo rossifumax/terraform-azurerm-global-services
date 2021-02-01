@@ -1,5 +1,6 @@
 resource "azurerm_security_center_subscription_pricing" "pricing" {
-  tier = var.security_center_pricing_tier
+  tier          = var.security_center_pricing_tier
+  resource_type = var.security_center_pricing_resource_type
 }
 
 resource "azurerm_security_center_contact" "contact" {
