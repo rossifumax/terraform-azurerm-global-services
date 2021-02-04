@@ -1,4 +1,4 @@
-# unreleased
+# v3.1.0/v4.1.0 - 2021-02-04
 
 Added
   * AZ-439: Add parameter `security_center_pricing_resource_types`, list of resource type to apply Security Center pricing
