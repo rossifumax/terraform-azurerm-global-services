@@ -73,10 +73,10 @@ module "security-center" {
   security_center_contact_phone = var.contact_phone
 
   # Optional
-  security_center_pricing_tier          = "Standard"
-  security_center_pricing_resource_type = "StorageAccounts"
-  security_center_alert_notifications   = true
-  security_center_alerts_to_admins      = true
+  security_center_pricing_tier           = "Standard"
+  security_center_pricing_resource_types = ["StorageAccounts"]
+  security_center_alert_notifications    = true
+  security_center_alerts_to_admins       = true
 
   security_center_workspaces = {
     "/subscriptions/00000000-0000-0000-0000-000000000000"                        = data.azurerm_log_analytics_workspace.workspace1.id  
