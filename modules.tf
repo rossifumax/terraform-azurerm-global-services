@@ -11,4 +11,3 @@ module "security-center" {
 
   security_center_workspaces = var.security_center_workspaces
 }
-

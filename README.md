@@ -3,12 +3,8 @@
 
 This feature (module composition) gathers the following Azure Global Services in one feature:
 * [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/)
-
-## Requirements
-
- * [AzureRM Terraform provider](https://www.terraform.io/docs/providers/azurerm/) >= 1.36
  
-## Terraform version compatibility
+## Version compatibility
 
 | Module version | Terraform version | AzureRM version |
 |----------------|-------------------| --------------- |
