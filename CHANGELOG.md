@@ -1,3 +1,8 @@
+# unreleased
+
+Added
+  * AZ-439: Add parameter `security_center_princing_resource_type`
+
 # v3.0.1/v4.0.0 - 2020-10-20
 
 Changed

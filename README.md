@@ -92,15 +92,14 @@ module "security-center" {
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | security\_center\_alert\_notifications | Whether to send security alerts notifications to the security contact or not. https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html#alert_notifications | `bool` | `true` | no |
 | security\_center\_alerts\_to\_admins | Whether to send security alerts notifications to subscription admins or not. https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html#alerts_to_admins | `bool` | `true` | no |
 | security\_center\_contact\_email | The email of the Security Center Contact. https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html#email | `string` | n/a | yes |
 | security\_center\_contact\_phone | The phone number of the Security Center Contact. https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html#phone | `string` | n/a | yes |
-| security\_center\_pricing\_tier | Manages the Pricing Tier for Azure Security Center in the current subscription. Possible values are Free and Standard. NOTE: Changing the pricing tier to Standard affects all resources in the subscription and could be quite costly. Deletion of this resource does not change or reset the pricing tier to Free. Source: https://www.terraform.io/docs/providers/azurerm/r/security_center_subscription_pricing.html | `string` | `"Free"` | no 
-| security\_center\_pricing\_resource\_type | The resource type this setting affects. Possible values are AppServices, ContainerRegistry, KeyVaults, KubernetesService, SqlServers, SqlServerVirtualMachines, StorageAccounts, and VirtualMachines. Source: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_subscription_pricing#resource\_type | `string` | `"VirtualMachines"` | no 
-|
-| security\_center\_workspaces | Map of the scopes with the associated Log Analytics Workspace.     Can only be used on \"Standard\" tier. Scope can be a Subscription or Resource Group id.     Example:<pre>{<br>      "/subscriptions/00000000-0000-0000-0000-000000000000" = data.azurerm_log_analytics_workspace.workspace.id<br>    }</pre>See https://www.terraform.io/docs/providers/azurerm/r/security_center_workspace.html" | `map(string)` | `{}` | no |
+| security\_center\_pricing\_resource\_type | The resource type this setting affects. Possible values are AppServices, ContainerRegistry, KeyVaults, KubernetesService, SqlServers, SqlServerVirtualMachines, StorageAccounts, and VirtualMachines. Source: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_subscription_pricing#resource_type | `string` | `"VirtualMachines"` | no |
+| security\_center\_pricing\_tier | Manages the Pricing Tier for Azure Security Center in the current subscription. Possible values are Free and Standard. NOTE: Changing the pricing tier to Standard affects all resources in the subscription and could be quite costly. Deletion of this resource does not change or reset the pricing tier to Free. Source: https://www.terraform.io/docs/providers/azurerm/r/security_center_subscription_pricing.html | `string` | `"Free"` | no |
+| security\_center\_workspaces | Map of the scopes with the associated Log Analytics Workspace.<br>    Can only be used on \"Standard\" tier. Scope can be a Subscription or Resource Group id.<br>    Example:<pre>{<br>      "/subscriptions/00000000-0000-0000-0000-000000000000" = data.azurerm_log_analytics_workspace.workspace.id<br>    }</pre>See https://www.terraform.io/docs/providers/azurerm/r/security_center_workspace.html" | `map(string)` | `{}` | no |
 
 ## Outputs
 
