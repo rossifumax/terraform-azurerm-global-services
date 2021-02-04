@@ -7,10 +7,10 @@ variable "security_center_pricing_tier" {
   default     = "Free"
 }
 
-variable "security_center_pricing_resource_type" {
-  description = "The resource type this setting affects. Possible values are AppServices, ContainerRegistry, KeyVaults, KubernetesService, SqlServers, SqlServerVirtualMachines, StorageAccounts, and VirtualMachines. Source: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_subscription_pricing#resource_type"
-  type        = string
-  default     = "VirtualMachines"
+variable "security_center_pricing_resource_types" {
+  description = "List of resource type to apply the Azure Security Center pricing tier. Possible values are AppServices, ContainerRegistry, KeyVaults, KubernetesService, SqlServers, SqlServerVirtualMachines, StorageAccounts, and VirtualMachines. Source: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_subscription_pricing#resource_type"
+  type        = list(string)
+  default     = ["AppServices", "ContainerRegistry", "KeyVaults", "KubernetesService", "SqlServers", "SqlServerVirtualMachines", "StorageAccounts", "VirtualMachines"]
 }
 
 variable "security_center_contact_email" {

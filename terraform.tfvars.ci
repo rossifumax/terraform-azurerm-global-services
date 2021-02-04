@@ -1,5 +1,5 @@
 security_center_pricing_tier="Standard"
-security_center_pricing_resource_type="StorageAccounts"
+security_center_pricing_resource_type=["StorageAccounts"]
 security_center_contact_email="test@fr.clara.net"
 security_center_contact_phone="0123456789"
 security_center_alert_notifications="true"
