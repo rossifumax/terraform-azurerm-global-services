@@ -7,7 +7,7 @@ This feature (module composition) gathers the following Azure Global Services in
 ## Version compatibility
 
 | Module version | Terraform version | AzureRM version |
-|----------------|-------------------| --------------- |
+| -------------- | ----------------- | --------------- |
 | >= 4.x.x       | 0.13.x            | >= 2.0          |
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
 | >= 2.x.x       | 0.12.x            | < 2.0           |
@@ -85,6 +85,21 @@ module "security-center" {
 }
 ```
 
+<!-- BEGIN_TF_DOCS -->
+## Providers
+
+No providers.
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| security-center | ./modules/security-center | n/a |
+
+## Resources
+
+No resources.
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -104,13 +119,7 @@ module "security-center" {
 | security\_center\_contact\_id | The Security Center contact ID. |
 | security\_center\_pricing\_ids | The Security Center subscription pricing IDs list. |
 | security\_center\_workspaces | The Security Center Workspaces |
-
+<!-- END_TF_DOCS -->
 ## Related documentation
-
-Terraform Security Center Subscription Pricing documentation: [www.terraform.io/docs/providers/azurerm/r/security_center_subscription_pricing.html](https://www.terraform.io/docs/providers/azurerm/r/security_center_subscription_pricing.html)
-
-Terraform Security Center Contact documentation: [www.terraform.io/docs/providers/azurerm/r/security_center_contact.html](https://www.terraform.io/docs/providers/azurerm/r/security_center_contact.html)
-
-Terraform Security Center Workspace documentation: [www.terraform.io/docs/providers/azurerm/r/security_center_workspace.html](https://www.terraform.io/docs/providers/azurerm/r/security_center_workspace.html)
 
 Microsoft Azure Security Center documentation: [docs.microsoft.com/en-us/azure/security-center/](https://docs.microsoft.com/en-us/azure/security-center/)
