@@ -94,7 +94,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| security-center | ./modules/security-center | n/a |
+| security\_center | ./modules/security-center | n/a |
 
 ## Resources
 

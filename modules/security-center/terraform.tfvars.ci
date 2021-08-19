@@ -1,0 +1,10 @@
+security_center_pricing_tier="Standard"
+security_center_pricing_resource_type=["StorageAccounts"]
+security_center_contact_email="test@fr.clara.net"
+security_center_contact_phone="0123456789"
+security_center_alert_notifications="true"
+security_center_alerts_to_admins="true"
+security_center_workspaces={
+    "/subscriptions/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" = "/subscriptions/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee/resourcegroups/test-workspace-rg/providers/microsoft.operationalinsights/workspaces/my-logs"
+    "/subscriptions/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee/resourcegroups/test-rg" = "/subscriptions/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee/resourcegroups/test-workspace-rg/providers/microsoft.operationalinsights/workspaces/my-logs2"
+}
