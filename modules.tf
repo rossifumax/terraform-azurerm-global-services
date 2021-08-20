@@ -1,4 +1,4 @@
-module "security-center" {
+module "security_center" {
   source = "./modules/security-center"
 
   security_center_contact_email = var.security_center_contact_email
