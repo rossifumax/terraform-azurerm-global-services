@@ -2,12 +2,14 @@
 [![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/claranet/global-services/azurerm/)
 
 This feature (module composition) gathers the following Azure Global Services in one feature:
-* [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/)
- 
-## Version compatibility
+* [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/)([example](examples/security-center/modules.tf))
+
+<!-- BEGIN_TF_DOCS -->
+## Global versioning rule for Claranet Azure modules
 
 | Module version | Terraform version | AzureRM version |
 | -------------- | ----------------- | --------------- |
+| >= 5.x.x       | 0.15.x & 1.0.x    | >= 2.0          |
 | >= 4.x.x       | 0.13.x            | >= 2.0          |
 | >= 3.x.x       | 0.12.x            | >= 2.0          |
 | >= 2.x.x       | 0.12.x            | < 2.0           |
@@ -15,9 +17,9 @@ This feature (module composition) gathers the following Azure Global Services in
 
 ## Usage
 
-This module is optimized to work with the [Claranet terraform-wrapper](https://github.com/claranet/terraform-wrapper) tool which set some terraform variables in the environment needed by this module.
-
-More details about variables set by the terraform-wrapper available in the [documentation](https://github.com/claranet/terraform-wrapper#environment).
+This module is optimized to work with the [Claranet terraform-wrapper](https://github.com/claranet/terraform-wrapper) tool
+which set some terraform variables in the environment needed by this module.
+More details about variables set by the `terraform-wrapper` available in the [documentation](https://github.com/claranet/terraform-wrapper#environment).
 
 ```hcl
 data "azurerm_log_analytics_workspace" "workspace1" {
@@ -30,43 +32,8 @@ data "azurerm_log_analytics_workspace" "workspace2" {
   resource_group_name = "test-rg"
 }
 
-module "global-services" {
+module "global_services" {
   source  = "claranet/global-services/azurerm"
-  version = "x.x.x"
-
-  security_center_contact_email = var.contact_email
-  security_center_contact_phone = var.contact_phone
-
-  # Optional
-  security_center_pricing_tier          = "Standard"
-  security_center_pricing_resource_type = "StorageAccounts"
-  security_center_alert_notifications   = true
-  security_center_alerts_to_admins      = true
-
-  security_center_workspaces = {
-    "/subscriptions/00000000-0000-0000-0000-000000000000"                        = data.azurerm_log_analytics_workspace.workspace1.id  
-    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg" = data.azurerm_log_analytics_workspace.workspace2.id
-  }
-}
-```
-
-## Using sub-modules
-Each integrated service can be used separately with the same inputs and outputs.
-
-### Security Center
-```hcl
-data "azurerm_log_analytics_workspace" "workspace1" {
-  name                = "workspace1-log"
-  resource_group_name = "test-rg"
-}
-
-data "azurerm_log_analytics_workspace" "workspace2" {
-  name                = "workspace2-log"
-  resource_group_name = "test-rg"
-}
-
-module "security-center" {
-  source = "claranet/global-services/azurerm//modules/security-center"
   version = "x.x.x"
 
   security_center_contact_email = var.contact_email
@@ -79,13 +46,13 @@ module "security-center" {
   security_center_alerts_to_admins       = true
 
   security_center_workspaces = {
-    "/subscriptions/00000000-0000-0000-0000-000000000000"                        = data.azurerm_log_analytics_workspace.workspace1.id  
+    "/subscriptions/00000000-0000-0000-0000-000000000000"                        = data.azurerm_log_analytics_workspace.workspace1.id
     "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg" = data.azurerm_log_analytics_workspace.workspace2.id
   }
 }
+
 ```
 
-<!-- BEGIN_TF_DOCS -->
 ## Providers
 
 No providers.

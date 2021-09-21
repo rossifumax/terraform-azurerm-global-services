@@ -1,24 +1,37 @@
-module "azure-regions" {
+module "azure_region" {
   source  = "claranet/regions/azurerm"
-  version = "2.0.1"
+  version = "x.x.x"
 
   azure_region = var.azure_region
 }
 
 module "rg" {
   source  = "claranet/rg/azurerm"
-  version = "2.1.0"
+  version = "x.x.x"
 
-  location    = module.azure-regions.location
+  location    = module.azure_region.location
   client_name = var.client_name
   environment = var.environment
   stack       = var.stack
 }
 
+resource "azurerm_log_analytics_workspace" "workspace1" {
+  location            = module.azure_region.location
+  name                = "law1"
+  resource_group_name = module.rg.resource_group_name
+  sku                 = "PerGB2018"
+}
 
-module "global-services" {
+resource "azurerm_log_analytics_workspace" "workspace2" {
+  location            = module.azure_region.location
+  name                = "law1"
+  resource_group_name = module.rg.resource_group_name
+  sku                 = "PerGB2018"
+}
+
+module "global_services" {
   source  = "claranet/global-services/azurerm"
-  version = "2.0.2"
+  version = "x.x.x"
 
   security_center_contact_email = var.contact_email
   security_center_contact_phone = var.contact_phone
