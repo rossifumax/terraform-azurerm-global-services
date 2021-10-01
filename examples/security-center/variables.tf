@@ -1,31 +1,29 @@
+variable "azure_region" {
+  description = "Azure region to use."
+  type        = string
+}
+
 variable "client_name" {
-  type = string
+  description = "Client name/account used in naming"
+  type        = string
 }
 
 variable "environment" {
-  type = string
+  description = "Project environment"
+  type        = string
 }
 
 variable "stack" {
-  type = string
-}
-
-variable "azure_region" {
-  type = string
+  description = "Project stack name"
+  type        = string
 }
 
 variable "contact_email" {
-  type = string
+  description = "Email contact"
+  type        = string
 }
 
 variable "contact_phone" {
-  type = string
-}
-
-variable "workspace1_name" {
-  type = string
-}
-
-variable "workspace2_name" {
-  type = string
+  description = "Phone contact"
+  type        = string
 }
