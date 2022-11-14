@@ -14,7 +14,7 @@ resource "azurerm_security_center_contact" "contact" {
 
 # Manages the subscription's Security Center Workspace.
 resource "azurerm_security_center_workspace" "security_workspace" {
-  for_each = var.security_center_workspaces
+  for_each = try({ for w in var.security_center_workspaces : w.scope_id => w.workspace_id }, {})
 
   scope        = each.key
   workspace_id = each.value

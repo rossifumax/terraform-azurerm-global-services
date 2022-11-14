@@ -4,7 +4,7 @@
 variable "security_center_pricing_tier" {
   description = "Manages the Pricing Tier for Azure Security Center in the current subscription. Possible values are Free and Standard. NOTE: Changing the pricing tier to Standard affects all resources in the subscription and could be quite costly. Deletion of this resource does not change or reset the pricing tier to Free. Source: https://www.terraform.io/docs/providers/azurerm/r/security_center_subscription_pricing.html"
   type        = string
-  default     = "Free"
+  default     = "Standard"
 }
 
 variable "security_center_pricing_resource_types" {
@@ -38,16 +38,13 @@ variable "security_center_alerts_to_admins" {
 variable "security_center_workspaces" {
   description = <<DESC
     Map of the scopes with the associated Log Analytics Workspace.
-    Can only be used on \"Standard\" tier. Scope can be a Subscription or Resource Group id.
-    Example:
-    ```
-    {
-      "/subscriptions/00000000-0000-0000-0000-000000000000" = data.azurerm_log_analytics_workspace.workspace.id
-    }
-    ```
+    Can only be used on `Standard` tier. Scope can be a Subscription or Resource Group ID.
     See https://www.terraform.io/docs/providers/azurerm/r/security_center_workspace.html"
 DESC
 
-  type    = map(string)
-  default = {}
+  type = list(object({
+    scope_id     = string
+    workspace_id = string
+  }))
+  default = []
 }
