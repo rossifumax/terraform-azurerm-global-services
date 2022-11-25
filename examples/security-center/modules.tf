@@ -42,8 +42,11 @@ module "global_services" {
   security_center_alert_notifications    = true
   security_center_alerts_to_admins       = true
 
-  security_center_workspaces = {
-    "/subscriptions/00000000-0000-0000-0000-000000000000"                        = azurerm_log_analytics_workspace.workspace1.id
-    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg" = azurerm_log_analytics_workspace.workspace2.id
-  }
+  security_center_workspaces = [{
+    scope_id     = "/subscriptions/00000000-0000-0000-0000-000000000000"
+    workspace_id = azurerm_log_analytics_workspace.workspace1.id
+    }, {
+    scope_id     = module.rg.resource_group_name.id
+    workspace_id = azurerm_log_analytics_workspace.workspace2.id
+  }]
 }

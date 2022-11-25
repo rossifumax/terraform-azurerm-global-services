@@ -2,6 +2,7 @@
 
 Changed
   * AZ-572: Revamp examples and improve CI
+  * AZ-901: Change default Security Center tier to `Standard` by default, change `security_center_workspaces` type
 
 # v4.1.1/v3.1.1 - 2021-08-20
 
